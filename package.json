@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "relay": "relay-compiler --src ./js --schema data/schema.graphql --extensions js jsx",
+    "server": "babel-node server.js",
+    "relay": "relay-compiler --src ./js --schema ./data/schema.graphql --extensions js jsx",
     "update-schema": "babel-node ./scripts/updateSchema.js"
   },
   "dependencies": {
@@ -9,6 +10,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
     "graphql-relay": "^0.5.5",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
