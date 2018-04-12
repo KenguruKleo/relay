@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "react",
+    "env",
+    "stage-1"
+  ],
+  "plugins": [
+    "relay",
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "transform-runtime",
+    "array-includes"
+  ]
+}
+

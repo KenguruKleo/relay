@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "relay": "relay-compiler --src ./src --schema path/schema.graphql --extensions js jsx"
+  },
+  "dependencies": {
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-relay": "^1.5.0"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^1.5.0",
+    "graphql": "^0.13.2",
+    "relay-compiler": "^1.5.0",
+    "watchman": "^1.0.0"
+  }
+}
