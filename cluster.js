@@ -1,6 +1,6 @@
 import cluster from 'cluster';
 import os from 'os';
-import server from './worker';
+import server from './server';
 
 const workers = {};
 let requests = 0;
@@ -12,7 +12,6 @@ const addWorker = ({ cluster, workers }) => {
   const worker = cluster.fork();
   const pid = worker.process.pid;
   worker.on('message', message => {
-    console.log(`message: ${JSON.stringify(message)}`);
     if (message.cmd === 'incrementRequestTotal') {
       requests++;
       Object.keys(workers)
