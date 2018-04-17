@@ -4,7 +4,7 @@
     "server:dev": "nodemon --exec npm run server --watch backend --watch data",
     "cluster": "babel-node ./backend/cluster.js",
     "relay": "relay-compiler --src ./js --schema ./data/schema.graphql --extensions js jsx",
-    "update-schema": "babel-node ./scripts/updateSchema.js",
+    "update-schema": "babel-node ./scripts/updateSchema.js && sed -i '' '/\"\"\"/d' ./data/schema.graphql",
     "lint": "eslint ."
   },
   "dependencies": {

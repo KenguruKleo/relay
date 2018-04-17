@@ -24,6 +24,8 @@ export default function start() {
       process.send({
         cmd: 'incrementRequestTotal',
       });
+    } else {
+      requests += 1;
     }
     next();
   });
