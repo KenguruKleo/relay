@@ -1,7 +1,7 @@
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
-import {schema} from './data/schema';
+import {schema} from '../data/schema';
 
 /** start worker */
 export default function start() {

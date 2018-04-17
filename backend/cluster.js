@@ -1,4 +1,4 @@
-import cluster from 'cluster';
+import cluster from 'backend/cluster';
 import os from 'os';
 import server from './server';
 

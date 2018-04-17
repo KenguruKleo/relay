@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "server": "babel-node server.js",
-    "cluster": "babel-node cluster.js",
+    "server": "babel-node ./backend/server.js",
+    "server:dev": "nodemon --exec npm run server --watch backend --watch data",
+    "cluster": "babel-node ./backend/cluster.js",
     "relay": "relay-compiler --src ./js --schema ./data/schema.graphql --extensions js jsx",
     "update-schema": "babel-node ./scripts/updateSchema.js",
     "lint": "eslint ."
@@ -31,6 +32,7 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-relay": "^0.0.21",
     "graphql": "^0.13.2",
+    "nodemon": "^1.17.3",
     "relay-compiler": "^1.5.0",
     "watchman": "^1.0.0",
     "webpack": "^4.5.0",
