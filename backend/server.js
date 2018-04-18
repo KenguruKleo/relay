@@ -21,6 +21,7 @@ export default function start() {
 
   /** middleware to count request - send to cluster */
   app.use((req, res, next) => {
+    logger.info(`total requests count: ${requests + 1}`);
     if (process.send) {
       process.send({
         cmd: 'incrementRequestTotal',
