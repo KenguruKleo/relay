@@ -1,6 +1,7 @@
 import cluster from 'cluster';
 import os from 'os';
 import server from './server';
+const logger = require('./utils/logger');
 
 const workers = {};
 let requests = 0;
@@ -28,7 +29,7 @@ const addWorker = ({ cluster, workers }) => {
 };
 
 if (cluster.isMaster) {
-  console.log(`Start: ${process.pid}, isMaster: ${cluster.isMaster}`);
+  logger.info(`Start: ${process.pid}, isMaster: ${cluster.isMaster}`);
   for (let i = 0; i < numCPU; i++) {
     const { pid, worker } = addWorker({ cluster, workers });
     workers[pid] = worker;
@@ -36,11 +37,11 @@ if (cluster.isMaster) {
   cluster.on('exit', (worker, code, signal) => {
     const pid = worker.process.pid;
     delete workers[pid];
-    console.log('Worker %s died.', pid);
+    logger.info('Worker %s died.', pid);
 
     const { pid: newPid, worker: newWorker } = addWorker({ cluster, workers });
     workers[newPid] = newWorker;
-    console.log('Restart new worker with pid: %s', newPid);
+    logger.info('Restart new worker with pid: %s', newPid);
   });
 } else {
   server();

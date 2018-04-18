@@ -2,6 +2,7 @@ import express from 'express';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import {schema} from '../data/schema';
+const logger = require('./utils/logger');
 
 /** start worker */
 export default function start() {
@@ -45,7 +46,7 @@ export default function start() {
   });
 
   app.listen(APP_PORT, () => {
-    console.log(`App is now running on http://localhost:${APP_PORT}, in process: ${process.pid}`);
+    logger.info(`App is now running on http://localhost:${APP_PORT}, in process: ${process.pid}`);
   });
 }
 

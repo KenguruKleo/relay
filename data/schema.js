@@ -119,33 +119,33 @@ const Query = new GraphQLObjectType({
   },
 });
 
-// const GraphQLAddTodoMutation = mutationWithClientMutationId({
-//   name: 'AddTodo',
-//   inputFields: {
-//     text: { type: new GraphQLNonNull(GraphQLString) },
-//   },
-//   outputFields: {
-//     todoEdge: {
-//       type: GraphQLTodoEdge,
-//       resolve: ({localTodoId}) => {
-//         const todo = getTodo(localTodoId);
-//         return {
-//           cursor: cursorForObjectInConnection(getTodos(), todo),
-//           node: todo,
-//         };
-//       },
-//     },
-//     viewer: {
-//       type: GraphQLUser,
-//       resolve: () => getViewer(),
-//     },
-//   },
-//   mutateAndGetPayload: ({text}) => {
-//     const localTodoId = addTodo(text);
-//     return {localTodoId};
-//   },
-// });
-//
+const GraphQLAddTodoMutation = mutationWithClientMutationId({
+  name: 'AddTodo',
+  inputFields: {
+    text: { type: new GraphQLNonNull(GraphQLString) },
+  },
+  outputFields: {
+    todoEdge: {
+      type: GraphQLTodoEdge,
+      resolve: ({localTodoId}) => {
+        const todo = getTodo(localTodoId);
+        return {
+          cursor: cursorForObjectInConnection(getTodos(), todo),
+          node: todo,
+        };
+      },
+    },
+    viewer: {
+      type: GraphQLUser,
+      resolve: () => getViewer(),
+    },
+  },
+  mutateAndGetPayload: ({text}) => {
+    const localTodoId = addTodo(text);
+    return {localTodoId};
+  },
+});
+
 // const GraphQLChangeTodoStatusMutation = mutationWithClientMutationId({
 //   name: 'ChangeTodoStatus',
 //   inputFields: {
@@ -251,19 +251,19 @@ const Query = new GraphQLObjectType({
 //   },
 // });
 //
-// const Mutation = new GraphQLObjectType({
-//   name: 'Mutation',
-//   fields: {
-//     addTodo: GraphQLAddTodoMutation,
-//     changeTodoStatus: GraphQLChangeTodoStatusMutation,
-//     markAllTodos: GraphQLMarkAllTodosMutation,
-//     removeCompletedTodos: GraphQLRemoveCompletedTodosMutation,
-//     removeTodo: GraphQLRemoveTodoMutation,
-//     renameTodo: GraphQLRenameTodoMutation,
-//   },
-// });
+const Mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addTodo: GraphQLAddTodoMutation,
+    // changeTodoStatus: GraphQLChangeTodoStatusMutation,
+    // markAllTodos: GraphQLMarkAllTodosMutation,
+    // removeCompletedTodos: GraphQLRemoveCompletedTodosMutation,
+    // removeTodo: GraphQLRemoveTodoMutation,
+    // renameTodo: GraphQLRenameTodoMutation,
+  },
+});
 
 export const schema = new GraphQLSchema({
   query: Query,
-  // mutation: Mutation,
+  mutation: Mutation,
 });
